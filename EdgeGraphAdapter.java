@@ -64,23 +64,23 @@ public class EdgeGraphAdapter implements EdgeGraph {
     public List<Edge> edges() {
       List<Edge> allEdge = new ArrayList<>();
       for(String i : g.nodes()) {
-        for(String j : g.succ()) {
+        for(String j : g.succ(i)) {
           allEdge.add(new Edge(i, j));
         }
       }
       return allEdge;
     }
 
-    public EdgeGraph union(EdgeGraph g) {
+    public EdgeGraph union(EdgeGraph n) {
       Graph a = new ListGraph();
       EdgeGraphAdapter b = new EdgeGraphAdapter(a);
-      for(String i : g.nodes()) {
+      for(String i : this.g.nodes()) {
         a.addNode(i);
-        for(String j : g.succ(i)) {
+        for(String j : this.g.succ(i)) {
           a.addEdge(i, j);
         }
       }
-      for(Edge e : g.edges()) {
+      for(Edge e : n.edges()) {
         b.addEdge(e);
       }
       return b;
@@ -91,7 +91,7 @@ public class EdgeGraphAdapter implements EdgeGraph {
         return true;
       }
       for(Edge i : e) {
-        if(!hasEdge(e)) {
+        if(!hasEdge(i)) {
           return false;
         }
       }
