@@ -23,7 +23,7 @@ public class ListGraph implements Graph {
     }
 
     public boolean hasNode(String n) {
-        return nodes.containsKey(n)
+        return nodes.containsKey(n);
     }
 
     public boolean hasEdge(String n1, String n2) {
@@ -37,9 +37,9 @@ public class ListGraph implements Graph {
 	    if(!nodes.containsKey(n)) {
             return false;
         }
-        nodes.remove(n)
+        nodes.remove(n);
         for(LinkedList<> s : nodes.values()) {
-            s.remove(n)
+            s.remove(n);
         }
         return true;
     }
@@ -52,7 +52,7 @@ public class ListGraph implements Graph {
     }
 
     public List<String> nodes() {
-        return new ArrayList<>(nodes.keySet())
+        return new ArrayList<>(nodes.keySet());
     }
 
     public List<String> succ(String n) {
@@ -97,22 +97,22 @@ public class ListGraph implements Graph {
     }
 
     public Graph subGraph(Set<String> sub) {
-        Graph final = new ListGraph();
+        Graph s = new ListGraph();
         for(String i : nodes()) {
             if(sub.contains(i)) {
-                final.addNode(i);
+                s.addNode(i);
             }
         }
         for(String i : nodes()) {
             if(sub.contains(i)) {
                 for(String j : nodes.succ()) {
                     if(sub.contains(j)) {
-                        final.addEdge(i, j);
+                        s.addEdge(i, j);
                     }
                 }
             }
         }
-        return final;
+        return s;
     }
 
     public boolean connected(String n1, String n2) {
