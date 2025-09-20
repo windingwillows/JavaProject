@@ -38,7 +38,7 @@ public class ListGraph implements Graph {
             return false;
         }
         nodes.remove(n);
-        for(LinkedList<> s : nodes.values()) {
+        for(LinkedList<String> s : nodes.values()) {
             s.remove(n);
         }
         return true;
@@ -59,7 +59,7 @@ public class ListGraph implements Graph {
         if(!nodes.containsKey(n)) {
             return false;
         }
-        return new ArrayList<>(nodes.get(n))
+        return new ArrayList<>(nodes.get(n));
     }
 
     public List<String> pred(String n) {
