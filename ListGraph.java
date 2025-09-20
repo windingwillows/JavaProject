@@ -105,7 +105,7 @@ public class ListGraph implements Graph {
         }
         for(String i : nodes()) {
             if(sub.contains(i)) {
-                for(String j : nodes.succ(i)) {
+                for(String j : this.succ(i)) {
                     if(sub.contains(j)) {
                         s.addEdge(i, j);
                     }
