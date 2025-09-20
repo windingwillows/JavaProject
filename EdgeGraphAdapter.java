@@ -28,15 +28,16 @@ public class EdgeGraphAdapter implements EdgeGraph {
       if(!g.hasNode(a) || !g.hasNode(b)) {
         return false;
       }
-      if(g.removeEdge(a, b)) {
-        if(g.succ(a).isEmpty() && g.pred(a).isEmpty()) {
+	  boolean r = g.removeEdge(a, b);
+      if(r) {
+        if(g.hasNode(a) && g.succ(a).isEmpty() && g.pred(a).isEmpty()) {
           g.removeNode(a);
         }
         if(g.hasNode(b) && g.succ(b).isEmpty() && g.pred(b).isEmpty()) {
           g.removeNode(b);
         }
       }
-      return g.removeEdge(a, b);
+      return r;
     }
 
     public List<Edge> outEdges(String n) {
