@@ -10,17 +10,17 @@ public class Main {
 	assert g.hasNode("a");
     }
 
-    // public static void test2() {
-	// Graph g = new ListGraph();
-	// EdgeGraph eg = new EdgeGraphAdapter(g);
-	// Edge e = new Edge("a", "b");
-	// assert eg.addEdge(e);
-	// assert eg.hasEdge(e);
-    // }
+    public static void test2() {
+	Graph g = new ListGraph();
+	EdgeGraph eg = new EdgeGraphAdapter(g);
+	Edge e = new Edge("a", "b");
+	assert eg.addEdge(e);
+	assert eg.hasEdge(e);
+    }
     
     public static void main(String[] args) {
 	test1();
-	// test2();
+	test2();
     }
 
 }
