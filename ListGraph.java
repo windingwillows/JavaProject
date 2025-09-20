@@ -28,7 +28,7 @@ public class ListGraph implements Graph {
 
     public boolean hasEdge(String n1, String n2) {
 	    if(!nodes.containsKey(n1) || !nodes.containsKey(n2)) {
-            throw new NoSuchElementException();
+            return false;
         }
         return nodes.get(n1).contains(n2);
     }
@@ -57,7 +57,7 @@ public class ListGraph implements Graph {
 
     public List<String> succ(String n) {
         if(!nodes.containsKey(n)) {
-            return false;
+            throw new NoSuchElementException();
         }
         return new ArrayList<>(nodes.get(n));
     }
@@ -77,11 +77,11 @@ public class ListGraph implements Graph {
 
     public Graph union(Graph g) {
         Graph union = new ListGraph();
-        for(String i : nodes()) {
+        for(String i : this.nodes()) {
             union.addNode(i);
         }
-        for(String i : nodes()) {
-            for(String j : nodes.succ(i)) {
+        for(String i : this.nodes()) {
+            for(String j : this.succ(i)) {
                 union.addEdge(i, j);
             }
         }
@@ -89,7 +89,7 @@ public class ListGraph implements Graph {
             union.addNode(i);
         }
         for(String i : g.nodes()) {
-            for(String j : nodes.succ(i)) {
+            for(String j : g.succ(i)) {
                 union.addEdge(i, j);
             }
         }
@@ -105,7 +105,7 @@ public class ListGraph implements Graph {
         }
         for(String i : nodes()) {
             if(sub.contains(i)) {
-                for(String j : nodes.succ()) {
+                for(String j : nodes.succ(i)) {
                     if(sub.contains(j)) {
                         s.addEdge(i, j);
                     }
